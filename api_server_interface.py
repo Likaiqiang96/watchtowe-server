@@ -63,13 +63,13 @@ class c_dictList(Resource):
         ID = args['ID']
         dikuai =args['dikuai']
         date=args['date']
-        print("============================",type(date),date)
+        # print("============================",type(date),date)
         
         #user = args['user']
         #pwd = args['pwd']
         #print(ID,user,pwd)
         # 调用方法
-   
+        info={'ID':ID,'dikuai':dikuai,'date':date}
         print("  post-->",info)
         return info ,200
 
