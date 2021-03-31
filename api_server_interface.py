@@ -65,7 +65,6 @@ class c_dictList(Resource):
         date=args['date']
         print("============================",type(date),date)
         
-
         #user = args['user']
         #pwd = args['pwd']
         #print(ID,user,pwd)

@@ -1,3 +1,3 @@
-#依赖
-pip install flask
-pip install flask_restful
+#依赖  
+pip install flask   
+pip install flask_restful  
