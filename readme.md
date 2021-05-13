@@ -1,6 +1,7 @@
 #依赖  
     pip install flask  
     pip install flask_restful  
+    pip install gevent  
 #mysql  
 root 登录  
 mysql -u root -p  

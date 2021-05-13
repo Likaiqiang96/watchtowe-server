@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 # -*- coding:UTF-8-*-
 # Author: zhuhongqiang
@@ -12,10 +11,10 @@ def post_to_server(post_data):
                    "Content-Type": "application/json"}
     req = urllib.request.Request(method="POST", url=url, data=post_data_json, headers=header_dict)
     r = urllib.request.urlopen(url, post_data_json)
+    
     print(r.read())
 
 # if __name__ == "__main__":
-
 
 post_data={'ID': 'PC', 'dikuai': '222', 'date': '333', 'updata': '444'}
 post_to_server(post_data)

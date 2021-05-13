@@ -2,7 +2,8 @@
 # encoding:utf-8
 from flask import Flask,request
 from flask_restful import reqparse, abort, Api, Resource
-
+from gevent import pywsgi
+import time
 #-----------------------
 #import decode_info as di
 
@@ -69,7 +70,8 @@ class c_dictList(Resource):
         #pwd = args['pwd']
         #print(ID,user,pwd)
         # 调用方法
-        info={'ID':ID,'dikuai':dikuai,'date':date}
+        time_str=time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime()) 
+        info={'ID':ID,'dikuai':dikuai,'date':date,'time':time_str}
         print("  post-->",info)
         return info ,200
 
@@ -98,3 +100,9 @@ if __name__ == '__main__':
     #调试地址
     # http://192.168.132.151:5000/GROUTH
     # http://127.0.0.1:5000/GROUTH
+    '''
+    长期部署
+    '''
+    # server = pywsgi.WSGIServer(('192.168.132.151', 5000), app)
+    # server.serve_forever()
+    # app.run()
