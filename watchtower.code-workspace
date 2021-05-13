@@ -3,5 +3,8 @@
         {
             "path": "."
         }
-    ]
+    ],
+    "settings": {
+        "python.pythonPath": "/home/kaiqiang/anaconda3/bin/python"
+    }
 }

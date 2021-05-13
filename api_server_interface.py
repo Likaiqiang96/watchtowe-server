@@ -36,6 +36,7 @@ parser.add_argument('ID',default='0',type=str)
 parser.add_argument('dikuai',default='0',type=str)
 parser.add_argument("date",default='0', type=str )
 parser.add_argument("updata",default='0', type=str )
+parser.add_argument("NDVI",default='0', type=str )
 #parser.add_argument("user", type=str )
 #parser.add_argument("pwd",  type=str )
 
@@ -44,13 +45,21 @@ parser.add_argument("updata",default='0', type=str )
 
 
 
-# 功能方法部分案例
-def show_result_by_id(arg0):
-    info =di.get_by_ID(arg0)
-    return info
-def show_result_by_dikuai(arg0):
-    info =di.get_by_dikuai(arg0)
-    return info
+# # 功能方法部分案例
+# def show_result_by_id(arg0):
+#     info =di.get_by_ID(arg0)
+#     return info
+# def show_result_by_dikuai(arg0):
+#     info =di.get_by_dikuai(arg0)
+#     return info
+
+data_file =r'./save/data.csv'
+def save_data(filename,data_to_write):
+  with open(filename,"a") as f:
+    f.write(data_to_write)
+
+
+
 
 # 路由类，函数get、post、put、delete等实现http请求方法
 # url不带入参  /GROUTH
@@ -64,6 +73,7 @@ class c_dictList(Resource):
         ID = args['ID']
         dikuai =args['dikuai']
         date=args['date']
+        ndvi=args['NDVI']
         # print("============================",type(date),date)
         
         #user = args['user']
@@ -71,8 +81,9 @@ class c_dictList(Resource):
         #print(ID,user,pwd)
         # 调用方法
         time_str=time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime()) 
-        info={'ID':ID,'dikuai':dikuai,'date':date,'time':time_str}
+        info={'ID':ID,'dikuai':dikuai,'date':date,'time':time_str,'NDVI':ndvi}
         print("  post-->",info)
+        save_data(data_file,str(info)+'\n')
         return info ,200
 
     #类型post，在列表GROUTH后添加一个值，并返回列表值
@@ -95,7 +106,7 @@ if __name__ == '__main__':
     #app.run(debug=True)
     #设置ip、端口
     
-    app.run(host="192.168.132.151", port=5000,debug=True)
+    app.run(host="192.168.132.77", port=5000,debug=True)
     
     #调试地址
     # http://192.168.132.151:5000/GROUTH
